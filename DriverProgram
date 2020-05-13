@@ -1,0 +1,92 @@
+import java.util.Scanner;
+
+public class Driver {
+    protected static String brandName;				// Name of brand
+    protected static String locationOfPurchase;		// Location 
+    protected static String sponsorName;			// Name of Sponsor
+    protected static int numOfRunners;				// number of runners
+    protected static int budgetAmount;				// Budget amount
+    protected static int totalCost;                 // Total Cost
+
+    public static void main(String []args)
+    {
+        // Display program header
+        System.out.println("Patapsco River Valley Running Festival LLC\n"
+        + "\nPost Race Food Budget Report\n");
+
+        // Instantiating a scanner object
+        Scanner input = new Scanner(System.in);
+
+        // enter runners
+        System.out.print("Please enter the number of runners in the festival: ");
+        numOfRunners = input.nextInt();
+        while(numOfRunners < 0)
+        {
+            System.out.println("Error - value must be greater than zero. Please reenter.\n");
+            System.out.print("Please enter the number of runners in the festival: ");
+            numOfRunners = input.nextInt();
+        }
+        input.nextLine();
+        // enter brand name
+        System.out.print("Please enter the brand name of the granola bars: ");
+        brandName = input.nextLine();
+
+        // enter location
+        System.out.print("Please enter in where the granola bars were purchased: ");
+        locationOfPurchase = input.nextLine();
+
+        // enter sponsor
+        System.out.print("Please enter in the sponsor of the granola bars: ");
+        sponsorName = input.nextLine();
+
+        // enter budget (Granola Bars)
+        System.out.print("Enter the budget for the granola bars: $");
+        budgetAmount = input.nextInt();
+        // validation
+        while(budgetAmount < 0)
+        {
+            System.out.println("Error - value must be greater than zero.  Please reenter.\n");
+            System.out.print("Enter the budget for the granola bars: $");
+            budgetAmount = input.nextInt();
+        } // end of validation trap
+
+        input.nextLine(); // clear the buffer
+		
+		// Create a new Granola object based on user input
+        GranolaBars totalGranola = new GranolaBars(numOfRunners, brandName, locationOfPurchase, sponsorName, budgetAmount);
+        System.out.print(totalGranola + "\n\n"); // Print the Granola object
+
+        // FRUIT INPUT
+		
+		// enter brand names
+        System.out.print("Please enter the brand names of the bananas and oranges: ");
+        brandName = input.nextLine();
+		
+		// enter location of purchase
+        System.out.print("Please enter in where the bananas and oranges were purchased: ");
+        locationOfPurchase = input.nextLine();
+		
+		// enter sponsor
+        System.out.print("Please enter in the sponsor of the bananas and oranges: ");
+        sponsorName = input.nextLine();
+
+		// enter budget
+        System.out.print("Enter the budget for the bananas and oranges: ");
+        budgetAmount = input.nextInt();
+		// Validate budget is greater than 0
+        while(budgetAmount < 0)
+        {
+            System.out.println("Error - value must be greater than zero.  Please reenter.\n");
+            System.out.print("Enter the budget for fruit: $");
+            budgetAmount = input.nextInt();
+        } // end of validation trap
+		
+        input.nextLine(); // clear the buffer
+		
+		// Create a new fruit object based on users input.
+        Fruit totalFruit = new Fruit(numOfRunners, brandName, locationOfPurchase, sponsorName, budgetAmount);
+        System.out.print(totalFruit);// Print the fruit object 
+		
+    } // end of main method
+
+} // end of Driver class
